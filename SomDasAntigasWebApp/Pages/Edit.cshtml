@@ -1,0 +1,74 @@
+﻿@page
+@model SomDasAntigasWebApp.Pages.EditModel
+
+<div class="row pt-5">
+    <div class="col-md-4">
+        <form method="post">
+            <h4>Alteração de Disco</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type = "hidden" asp-for = "Disc.DiscId" />
+
+            <div class="form-group">
+
+                <label asp-for="Disc.Name" class="control-label"></label>
+                <input asp-for="Disc.Name" class="form-control" />
+                <span asp-validation-for="Disc.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Disc.Band" class="control-label"></label>
+                <input asp-for="Disc.Band" class="form-control" />
+                <span asp-validation-for="Disc.Band" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Disc.Description" class="control-label"></label>
+                <input asp-for="Disc.Description" class="form-control" />
+                <span asp-validation-for="Disc.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Disc.ImageUri" class="control-label"></label>
+                <input asp-for="Disc.ImageUri" class="form-control" />
+                <span asp-validation-for="Disc.ImageUri" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Disc.Price" class="control-label"></label>
+                <input asp-for="Disc.Price" class="form-control" />
+                <span asp-validation-for="Disc.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Disc.Release" class="control-label"></label>
+                <input asp-for="Disc.Release" class="form-control" />
+                <span asp-validation-for="Disc.Release" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+                <label asp-for="Disc.GenreId" class="control-label"></label>
+
+                <select class="form-select" asp-for="Disc.GenreId" asp-items="Model.GenreOptionItems">
+                    <option value="">Selecione uma opção</option>
+                </select>
+                <span asp-validation-for="Disc.GenreId" class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Excluir" class="btn btn-danger" asp-page-handler="Exclusao"/>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

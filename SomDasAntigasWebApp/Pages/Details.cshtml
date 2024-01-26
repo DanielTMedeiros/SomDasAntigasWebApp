@@ -1,0 +1,25 @@
+﻿@page "/detalhe/{slug}/{id}"
+@model SomDasAntigasWebApp.Pages.DetailsModel
+
+<h2 class="my-3">@Model.Disc.Name</h2>
+<div class="row">
+    <div class="col-4">
+        <img class="img-fluid rounded" src="@Model.Disc.ImageUri">
+    </div>
+    <div class="col-6">
+        <h4 class="my-3">Sobre:</h4>
+        <p>@Model.Disc.Description</p>
+        <h4 class="my-3">Mais Info:</h4>
+        <ul>
+            <li><label asp-for="Disc.Band"></label>: @Model.Disc.Band</li>
+            <li><label asp-for="Disc.Release"></label>: @Model.Disc.Release</li>
+            <li><label asp-for="Disc.Price"></label>: @Html.DisplayFor(model => model.Disc.Price)</li>
+        </ul>
+        @if (User.Identity.IsAuthenticated)
+        {
+            //Exibir elementos somente para usuários autenticados
+            <a class="btn my-3 btn-primary" asp-page="/Edit" asp-route-id="@Model.Disc.DiscId">Editar</a>
+        }
+        
+    </div>
+</div>
